@@ -8,20 +8,21 @@
 
 # text-game assests
 .data 
-	LINE0: .asciiz "||==============================================================================================================================||\n"
-	LINE1: .asciiz "||  ######   ##     ##  #######   ######    ######   #######  ##     ##    ######        ######      ##     ##       ##  #######||\n"
-	LINE2: .asciiz "|| ##    ##  ##     ##  ##       ##    ##  ##    ##     ##    ###    ##   ##    ##      ##    ##    ####    ###     ###  ##     ||\n"
-	LINE3: .asciiz "||##         ##     ##  ##       ##        ##           ##    ####   ##  ##            ##          ##  ##   ####   ####  ##     ||\n"
-	LINE4: .asciiz "||##   ####  ##     ##  #######   ######    ######      ##    ## ##  ##  ##   ####     ##   ####  ##    ##  ## ## ## ##  #######||\n"
-	LINE5: .asciiz "||##    ##   ##     ##  ##             ##        ##     ##    ##  ## ##  ##    ##      ##    ##   ########  ##  ###  ##  ##     ||\n"
-	LINE6: .asciiz "|| ##   ##   ##     ##  ##       ##    ##  ##    ##     ##    ##   ####   ##   ##       ##   ##   ##    ##  ##   #   ##  ##     ||\n"
-	LINE7: .asciiz "||  #####     #######   #######   ######    ######   #######  ##    ###    #####         #####    ##    ##  ##       ##  #######||\n"
-        AUTHR: .asciiz "||=======================================================BY=ABRORJON=ASRALOV====================================================||\n"
-        INTRO: .asciiz "Greetings, human! Prepare to be outsmarted by a random number generator.\n"
-        DESCR: .asciiz "The randomizer, in its infinite wisdom (or lack thereof), has conjured a\nnumber from the depths of its digital mind. Are you brave enough to face\nits numerical challenge? (Enter 1 if you accept the challenge, 0 otherwise) "
-        EXIT_MSG: .asciiz "The mystery remains unsolved, but the game is never truly over. The randomizer whispers, 'Until next time...'\n"
-        ACCEPTED: .asciiz "\nThe gauntlet has been thrown! You, brave adventurer, have accepted the challenge\nto decipher the secrets of the randomizer. May your guesses be ever in your favor...\nbecause the randomizer certainly isn't playing fair! "
-        PROMPT_UPPER_BOUND: .asciiz "\nTime to set the stage for numerical chaos! Choose a number, any positive number\n(well, not ANY number... let's keep it reasonable), and the randomizer will unleash\na secret value within its domain. Choose wisely, or face the consequences of a\nridiculously difficult game! "
+	LINE0: .asciiz "||======================================================================================================================================||\n"
+	LINE1: .asciiz "||      ######   ##     ##  #######   ######    ######   #######  ##     ##    ######        ######      ##     ##       ##  #######    ||\n"
+	LINE2: .asciiz "||     ##    ##  ##     ##  ##       ##    ##  ##    ##     ##    ###    ##   ##    ##      ##    ##    ####    ###     ###  ##         ||\n"
+	LINE3: .asciiz "||    ##         ##     ##  ##       ##        ##           ##    ####   ##  ##            ##          ##  ##   ####   ####  ##         ||\n"
+	LINE4: .asciiz "||    ##   ####  ##     ##  #######   ######    ######      ##    ## ##  ##  ##   ####     ##   ####  ##    ##  ## ## ## ##  #######    ||\n"
+	LINE5: .asciiz "||    ##    ##   ##     ##  ##             ##        ##     ##    ##  ## ##  ##    ##      ##    ##   ########  ##  ###  ##  ##         ||\n"
+	LINE6: .asciiz "||     ##   ##   ##     ##  ##       ##    ##  ##    ##     ##    ##   ####   ##   ##       ##   ##   ##    ##  ##   #   ##  ##         ||\n"
+	LINE7: .asciiz "||      #####     #######   #######   ######    ######   #######  ##    ###    #####         #####    ##    ##  ##       ##  #######    ||\n"
+    AUTHR: .asciiz "||=======================================================BY=ABRORJON=ASRALOV============================================================||\n"
+	SPACE: .asciiz "||                                                                                                                                      ||\n"
+    INTRO: .asciiz "Greetings, human! Prepare to be outsmarted by a random number generator.\n"
+    DESCR: .asciiz "The randomizer, in its infinite wisdom (or lack thereof), has conjured a\nnumber from the depths of its digital mind. Are you brave enough to face\nits numerical challenge? (Enter 1 if you accept the challenge, 0 otherwise) "
+    EXIT_MSG: .asciiz "The mystery remains unsolved, but the game is never truly over. The randomizer whispers, 'Until next time...'\n"
+    ACCEPTED: .asciiz "\nThe gauntlet has been thrown! You, brave adventurer, have accepted the challenge\nto decipher the secrets of the randomizer. May your guesses be ever in your favor...\nbecause the randomizer certainly isn't playing fair! "
+    PROMPT_UPPER_BOUND: .asciiz "\nTime to set the stage for numerical chaos! Choose a number, any positive number\n(well, not ANY number... let's keep it reasonable), and the randomizer will unleash\na secret value within its domain. Choose wisely, or face the consequences of a\nridiculously difficult game! "
 	GUESS: .asciiz "\nEnter The Mysterious Number: "
 	USER_GUESSED: .asciiz "Wow, you actually guessed it! Either you're a mind reader, or the randomizer is getting rusty.\n"
 	HIGH_MSG: .asciiz "Whoa there, buddy! Your guess just flew past the number and is now orbiting Mars. Aim a little lower!\n"
@@ -43,6 +44,10 @@ main:
 	# PRINTING GAME NAME MESSAGE
 	addi $v0, $zero, 4		# System.out.println(LINE0);
 	la $a0, LINE0
+	syscall
+
+	addi $v0, $zero, 4		# System.out.println(SPACE);
+	la $a0, SPACE
 	syscall
 	
 	addi $v0, $zero, 4		# System.out.println(LINE1);
@@ -71,6 +76,10 @@ main:
 	
 	addi $v0, $zero, 4		# System.out.println(LINE7);
 	la $a0, LINE7
+	syscall
+
+	addi $v0, $zero, 4		# System.out.println(SPACE);
+	la $a0, SPACE
 	syscall
 	
 	addi $v0, $zero, 4		# System.out.println(AUTHR);
@@ -120,31 +129,22 @@ main:
 	la $a0, ACCEPTED
 	syscall
 
- 	addi $v0, $zero, 11		# System.out.println("=");
-  	addi $a0, $zero, 61
-   	syscall
-
-    	addi $v0, $zero, 11		# System.out.println(" ");
-     	addi $a0, $zero, 32
-      	syscall 
-
-    	addi $v0, $zero, 11		# System.out.println(">");
-     	addi $a0, $zero, 62
-      	syscall
-
-        addi $v0, $zero, 11		# System.out.println(" ");
-     	addi $a0, $zero, 32
-      	syscall 
-	
-	
 	# asking for user's input that is going to be a positive integer N
 	addi $v0, $zero, 4		# System.out.println(PROMPT_UPPER_BOUND);
 	la $a0, PROMPT_UPPER_BOUND	
 	syscall
-	
-	addi $v0, $zero, 11		# System.out.println();
-	addi $a0,$zero, 10
-	syscall
+
+	addi $v0, $zero, 11		# System.out.println("=");
+  	addi $a0, $zero, 61
+   	syscall
+
+    addi $v0, $zero, 11		# System.out.println(">");
+    addi $a0, $zero, 62
+    syscall
+
+    addi $v0, $zero, 11		# System.out.println(" ");
+    addi $a0, $zero, 32
+    syscall 
 	
 	addi $v0, $zero, 5		# user_input
 	syscall
