@@ -9,6 +9,6 @@ the range between [0, N] where N is inclusive. If user finds the mysterious numb
 be promted for another game. 
 
 ## Tools & Languages
-Assembly, Mars Simulator
+![Assembly Logo](images/assembly_logo.png), Mars Simulator
 
 
