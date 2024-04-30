@@ -20,7 +20,7 @@
         INTRO: .asciiz "Greetings, human! Prepare to be outsmarted by a random number generator.\n"
         DESCR: .asciiz "The randomizer, in its infinite wisdom (or lack thereof), has conjured a\nnumber from the depths of its digital mind. Are you brave enough to face\nits numerical challenge? (Enter 1 if you accept the challenge, 0 otherwise) "
         EXIT_MSG: .asciiz "The mystery remains unsolved, but the game is never truly over. The randomizer whispers, 'Until next time...'\n"
-        ACCEPTED: .asciiz "\nThe gauntlet has been thrown! You, brave adventurer, have accepted the challenge\nto decipher the secrets of the randomizer. May your guesses be ever in your favor...\nbecause the randomizer certainly isn't playing fair!\n"
+        ACCEPTED: .asciiz "\nThe gauntlet has been thrown! You, brave adventurer, have accepted the challenge\nto decipher the secrets of the randomizer. May your guesses be ever in your favor...\nbecause the randomizer certainly isn't playing fair! "
         PROMPT_UPPER_BOUND: .asciiz "\nTime to set the stage for numerical chaos! Choose a number, any positive number\n(well, not ANY number... let's keep it reasonable), and the randomizer will unleash\na secret value within its domain. Choose wisely, or face the consequences of a\nridiculously difficult game! "
 	GUESS: .asciiz "\nEnter The Mysterious Number: "
 	USER_GUESSED: .asciiz "Wow, you actually guessed it! Either you're a mind reader, or the randomizer is getting rusty.\n"
@@ -91,6 +91,22 @@ main:
 	la $a0, DESCR
 	syscall
 
+ 	addi $v0, $zero, 11		# System.out.println("=");
+  	addi $a0, $zero, 61
+   	syscall
+
+    	addi $v0, $zero, 11		# System.out.println(" ");
+     	addi $a0, $zero, 32
+      	syscall 
+
+    	addi $v0, $zero, 11		# System.out.println(">");
+     	addi $a0, $zero, 62
+      	syscall
+
+        addi $v0, $zero, 11		# System.out.println(" ");
+     	addi $a0, $zero, 32
+      	syscall 
+
 	# getting user's input. If user enters 1
  	# then game starts by asking for N number
 	addi $v0, $zero, 5		# user_input
@@ -103,6 +119,22 @@ main:
 	addi $v0, $zero, 4		# System.out.println(ACCEPTED);
 	la $a0, ACCEPTED
 	syscall
+
+ 	addi $v0, $zero, 11		# System.out.println("=");
+  	addi $a0, $zero, 61
+   	syscall
+
+    	addi $v0, $zero, 11		# System.out.println(" ");
+     	addi $a0, $zero, 32
+      	syscall 
+
+    	addi $v0, $zero, 11		# System.out.println(">");
+     	addi $a0, $zero, 62
+      	syscall
+
+        addi $v0, $zero, 11		# System.out.println(" ");
+     	addi $a0, $zero, 32
+      	syscall 
 	
 	
 	# asking for user's input that is going to be a positive integer N
