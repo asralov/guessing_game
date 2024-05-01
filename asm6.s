@@ -19,15 +19,15 @@
     AUTHR: .asciiz "||=======================================================BY=ABRORJON=ASRALOV============================================================||\n"
 	SPACE: .asciiz "||                                                                                                                                      ||\n"
     INTRO: .asciiz "Greetings, human! Prepare to be outsmarted by a random number generator.\n"
-    DESCR: .asciiz "The randomizer, in its infinite wisdom (or lack thereof), has conjured a\nnumber from the depths of its digital mind. Are you brave enough to face\nits numerical challenge? (Enter 1 if you accept the challenge, 0 otherwise) "
+    DESCR: .asciiz "The randomizer, in its infinite wisdom (or lack thereof), has conjured a\nnumber from the depths of its digital mind. Are you brave enough to face\nits numerical challenge? (Enter 1 if you accept the challenge, 0 otherwise)"
     EXIT_MSG: .asciiz "The mystery remains unsolved, but the game is never truly over. The randomizer whispers, 'Until next time...'\n"
-    ACCEPTED: .asciiz "\nThe gauntlet has been thrown! You, brave adventurer, have accepted the challenge\nto decipher the secrets of the randomizer. May your guesses be ever in your favor...\nbecause the randomizer certainly isn't playing fair! "
+    ACCEPTED: .asciiz "\nThe gauntlet has been thrown! You, brave adventurer, have accepted the challenge\nto decipher the secrets of the randomizer. May your guesses be ever in your favor...\nbecause the randomizer certainly isn't playing fair!"
     PROMPT_UPPER_BOUND: .asciiz "\nTime to set the stage for numerical chaos! Choose a number, any positive number\n(well, not ANY number... let's keep it reasonable), and the randomizer will unleash\na secret value within its domain. Choose wisely, or face the consequences of a\nridiculously difficult game! "
 	GUESS: .asciiz "\nEnter The Mysterious Number:"
 	USER_GUESSED: .asciiz "Wow, you actually guessed it! Either you're a mind reader, or the randomizer is getting rusty.\n"
 	HIGH_MSG: .asciiz "Whoa there, buddy! Your guess just flew past the number and is now orbiting Mars. Aim a little lower!\n"
 	LOW_MSG: .asciiz "Brrr, that guess is colder than a penguin in Antarctica! Try a higher number to warm things up.\n"
-	ANOTHER_GAME: .asciiz "\nDid that tickle your guessing bone? Enter 1 to dive back into the number-guessing madness, or 0 to\nreturn to the mundane world of certainty. "
+	ANOTHER_GAME: .asciiz "\nDid that tickle your guessing bone? Enter 1 to dive back into the number-guessing madness, or 0 to\nreturn to the mundane world of certainty."
 	REVEAL: .asciiz "\nThe number that played hide-and-seek with your sanity is finally revealed:"
 	WRONG_MSG: .asciiz "\nHouston, we have a problem. Your number is out of orbit! Try again.\n"
 	BYE_MSG: .asciiz "\nAh, a strategic retreat! The randomizer will miss your valiant attempts to decipher its numerical secrets.\nUntil next time, may your days be filled with certainty and your nights free of number-guessing nightmares!\n"
@@ -100,6 +100,10 @@ main:
 	la $a0, DESCR
 	syscall
 
+	addi $v0, $zero, 11		# System.out.println(" ");
+    addi $a0, $zero, 32
+    syscall 
+
  	addi $v0, $zero, 11		# System.out.println("=");
   	addi $a0, $zero, 61
    	syscall
@@ -128,6 +132,10 @@ main:
 	addi $v0, $zero, 4		# System.out.println(ACCEPTED);
 	la $a0, ACCEPTED
 	syscall
+
+	addi $v0, $zero, 11		# System.out.println(" ");
+    addi $a0, $zero, 32
+    syscall 
 
 	# asking for user's input that is going to be a positive integer N
 	addi $v0, $zero, 4		# System.out.println(PROMPT_UPPER_BOUND);
@@ -224,6 +232,10 @@ main:
 	addi $v0, $zero, 4		# System.out.println(ANOTHER_GAME);
 	la $a0, ANOTHER_GAME
 	syscall
+
+	addi $v0, $zero, 11		# System.out.println(" ");
+    addi $a0, $zero, 32
+    syscall 
 	
 	# get user's input
 	addi $v0, $zero, 5
