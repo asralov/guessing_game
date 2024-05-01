@@ -104,17 +104,17 @@ main:
   	addi $a0, $zero, 61
    	syscall
 
-    	addi $v0, $zero, 11		# System.out.println(" ");
-     	addi $a0, $zero, 32
-      	syscall 
+    addi $v0, $zero, 11		# System.out.println(" ");
+    addi $a0, $zero, 32
+    syscall 
 
-    	addi $v0, $zero, 11		# System.out.println(">");
-     	addi $a0, $zero, 62
-      	syscall
+    addi $v0, $zero, 11		# System.out.println(">");
+    addi $a0, $zero, 62
+    syscall
 
-        addi $v0, $zero, 11		# System.out.println(" ");
-     	addi $a0, $zero, 32
-      	syscall 
+    addi $v0, $zero, 11		# System.out.println(" ");
+    addi $a0, $zero, 32
+    syscall 
 
 	# getting user's input. If user enters 1
  	# then game starts by asking for N number
