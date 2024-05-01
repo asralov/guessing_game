@@ -16,14 +16,14 @@
 	LINE5: .asciiz "||    ##    ##   ##     ##  ##             ##        ##     ##    ##  ## ##  ##    ##      ##    ##   ########  ##  ###  ##  ##         ||\n"
 	LINE6: .asciiz "||     ##   ##   ##     ##  ##       ##    ##  ##    ##     ##    ##   ####   ##   ##       ##   ##   ##    ##  ##   #   ##  ##         ||\n"
 	LINE7: .asciiz "||      #####     #######   #######   ######    ######   #######  ##    ###    #####         #####    ##    ##  ##       ##  #######    ||\n"
-    AUTHR: .asciiz "||=======================================================BY=ABRORJON=ASRALOV============================================================||\n"
+    	AUTHR: .asciiz "||=======================================================BY=ABRORJON=ASRALOV============================================================||\n"
 	SPACE: .asciiz "||                                                                                                                                      ||\n"
-    INTRO: .asciiz "Greetings, human! Prepare to be outsmarted by a random number generator.\n"
-    DESCR: .asciiz "The randomizer, in its infinite wisdom (or lack thereof), has conjured a\nnumber from the depths of its digital mind. Are you brave enough to face\nits numerical challenge? (Enter 1 if you accept the challenge, 0 otherwise)"
-    EXIT_MSG: .asciiz "The mystery remains unsolved, but the game is never truly over. The randomizer whispers, 'Until next time...'\n"
-    ACCEPTED: .asciiz "\nThe gauntlet has been thrown! You, brave adventurer, have accepted the challenge\nto decipher the secrets of the randomizer. May your guesses be ever in your favor...\nbecause the randomizer certainly isn't playing fair!"
-    PROMPT_UPPER_BOUND: .asciiz "\nTime to set the stage for numerical chaos! Choose a number, any positive number\n(well, not ANY number... let's keep it reasonable), and the randomizer will unleash\na secret value within its domain. Choose wisely, or face the consequences of a\nridiculously difficult game! "
-	GUESS: .asciiz "\nEnter The Mysterious Number:"
+    	INTRO: .asciiz "Greetings, human! Prepare to be outsmarted by a random number generator.\n"
+    	DESCR: .asciiz "The randomizer, in its infinite wisdom (or lack thereof), has conjured a\nnumber from the depths of its digital mind. Are you brave enough to face\nits numerical challenge? (Enter 1 if you accept the challenge, 0 otherwise)"
+    	EXIT_MSG: .asciiz "The mystery remains unsolved, but the game is never truly over. The randomizer whispers, 'Until next time...'\n"
+    	ACCEPTED: .asciiz "\nThe gauntlet has been thrown! You, brave adventurer, have accepted the challenge\nto decipher the secrets of the randomizer. May your guesses be ever in your favor...\nbecause the randomizer certainly isn't playing fair!"
+    	PROMPT_UPPER_BOUND: .asciiz "\nTime to set the stage for numerical chaos! Choose a number, any positive number\n(well, not ANY number... let's keep it reasonable), and the randomizer will unleash\na secret value within its domain. Choose wisely, or face the consequences of a\nridiculously difficult game!"
+	GUESS: .asciiz "\nEnter The Mysterious Number"
 	USER_GUESSED: .asciiz "Wow, you actually guessed it! Either you're a mind reader, or the randomizer is getting rusty.\n"
 	HIGH_MSG: .asciiz "Whoa there, buddy! Your guess just flew past the number and is now orbiting Mars. Aim a little lower!\n"
 	LOW_MSG: .asciiz "Brrr, that guess is colder than a penguin in Antarctica! Try a higher number to warm things up.\n"
@@ -101,24 +101,20 @@ main:
 	syscall
 
 	addi $v0, $zero, 11		# System.out.println(" ");
-    addi $a0, $zero, 32
-    syscall 
+    	addi $a0, $zero, 32
+    	syscall 
 
  	addi $v0, $zero, 11		# System.out.println("=");
   	addi $a0, $zero, 61
    	syscall
 
-    addi $v0, $zero, 11		# System.out.println(" ");
-    addi $a0, $zero, 32
-    syscall 
+    	addi $v0, $zero, 11		# System.out.println(">");
+    	addi $a0, $zero, 62
+    	syscall
 
-    addi $v0, $zero, 11		# System.out.println(">");
-    addi $a0, $zero, 62
-    syscall
-
-    addi $v0, $zero, 11		# System.out.println(" ");
-    addi $a0, $zero, 32
-    syscall 
+    	addi $v0, $zero, 11		# System.out.println(" ");
+    	addi $a0, $zero, 32
+    	syscall 
 
 	# getting user's input. If user enters 1
  	# then game starts by asking for N number
@@ -134,25 +130,29 @@ main:
 	syscall
 
 	addi $v0, $zero, 11		# System.out.println(" ");
-    addi $a0, $zero, 32
-    syscall 
+    	addi $a0, $zero, 32
+    	syscall 
 
 	# asking for user's input that is going to be a positive integer N
 	addi $v0, $zero, 4		# System.out.println(PROMPT_UPPER_BOUND);
 	la $a0, PROMPT_UPPER_BOUND	
 	syscall
 
+	addi $v0, $zero, 11		# System.out.println(" ");
+    	addi $a0, $zero, 32
+    	syscall 
+
 	addi $v0, $zero, 11		# System.out.println("=");
   	addi $a0, $zero, 61
    	syscall
 
-    addi $v0, $zero, 11		# System.out.println(">");
-    addi $a0, $zero, 62
-    syscall
+    	addi $v0, $zero, 11		# System.out.println(">");
+    	addi $a0, $zero, 62
+    	syscall
 
-    addi $v0, $zero, 11		# System.out.println(" ");
-    addi $a0, $zero, 32
-    syscall 
+    	addi $v0, $zero, 11		# System.out.println(" ");
+    	addi $a0, $zero, 32
+    	syscall 
 	
 	addi $v0, $zero, 5		# user_input
 	syscall
@@ -171,14 +171,18 @@ main:
 	add $t1, $zero, $a0		# saving t1 to be random number => t1 = a0
 
 	# a game loop where user can keep guessing till he finds the correct number
-	GUESS_LOOP:			# while (notFound);
-	addi $v0, $zero, 4		# System.out.println(GUESS);
+	GUESS_LOOP:				# while (notFound);
+	addi $v0, $zero, 4		# System.out.print(GUESS);
 	la $a0, GUESS
 	syscall
 
+	addi $v0, $zero, 11		# System.out.print(":");
+	addi $a0, $zero, 58
+	syscall
+
 	addi $v0, $zero, 11		# System.out.println(" ");
-    addi $a0, $zero, 32
-    syscall 
+    	addi $a0, $zero, 32
+    	syscall 
 	
 	addi $v0, $zero, 5		# get user's input
 	syscall
@@ -201,12 +205,12 @@ main:
 	# checking if user_input - random_num == 0. If true, goto GUESSED
 	sub $t3, $t2, $t1
 	
-	beq $t3, $zero, GUESSED		# if user_input == rand_num => goto GUESSED
+	beq $t3, $zero, GUESSED	# if user_input == rand_num => goto GUESSED
 	
 	slt $t4, $t2, $t1		# t2 = user < rand_num considering the first equal check
 	
 	addi $t5, $zero, 1
-	beq $t4, $t5, GUESS_LOW		# if user_guess < random_number { goto GUESS_LOW }
+	beq $t4, $t5, GUESS_LOW	# if user_guess < random_number { goto GUESS_LOW }
 	
 	# otherwise, if it does not pass equal check and second check, it must be
 	# third case
@@ -234,8 +238,8 @@ main:
 	syscall
 
 	addi $v0, $zero, 11		# System.out.println(" ");
-    addi $a0, $zero, 32
-    syscall 
+    	addi $a0, $zero, 32
+    	syscall 
 	
 	# get user's input
 	addi $v0, $zero, 5
@@ -266,8 +270,8 @@ main:
 	syscall
 
 	addi $v0, $zero, 11		# System.out.println(" ");
-    addi $a0, $zero, 32
-    syscall 
+    	addi $a0, $zero, 32
+    	syscall 
 	
 	addi $v0, $zero, 1		# System.out.print(GUESSED_NUM);
 	add $a0, $zero, $t1
